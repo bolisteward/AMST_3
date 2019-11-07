@@ -44,7 +44,7 @@ public class PerfilUsuario extends AppCompatActivity {
         txt_name.setText(info_user.get("user_name"));
         txt_email.setText(info_user.get("user_email"));
         String photo = info_user.get("user_photo");
-        Picasso.get(getApplicationContext()).load(photo).into(imv_photo);
+        Picasso.get().load(photo).into(imv_photo);
         iniciarBaseDeDatos();
         leerTweets();
         escribirTweets(info_user.get("user_name"));
