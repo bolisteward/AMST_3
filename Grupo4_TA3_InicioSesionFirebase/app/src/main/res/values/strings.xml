@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Grupo4_TA3_InicioSesionFirebase</string>
+    <string name="app_nameUser">Nombre de usuario:</string>
+
 </resources>

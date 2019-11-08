@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -104,10 +105,25 @@ public class MainActivity extends AppCompatActivity {
             info_user.put("user_email", user.getEmail());
             info_user.put("user_photo", String.valueOf(user.getPhotoUrl()));
             info_user.put("user_id", user.getUid());
+            info_user.put("user_providerId", user.getProviderId());
+            if (user.getPhoneNumber() !=null){
+                info_user.put("user_phone", user.getPhoneNumber());
+                System.out.println("Si tiene numero celular");
+            }else {
+                info_user.put("user_phone", "Sin numero");
+                System.out.println("Sin numero");
+            }
+
             finish();
-            Intent intent = new Intent(this, PerfilUsuario.class);
-            intent.putExtra("info_user", info_user);
-            startActivity(intent);
+            new Handler().postDelayed(new Runnable(){
+                @Override
+                public void run() {
+                    Intent intent = new Intent(MainActivity.this, Splash_1.class);
+                    intent.putExtra("info_user", info_user);
+                    startActivity(intent);
+                }
+            },1000);
+
         }else {
             System.out.println("Sin registrarse");
         }
