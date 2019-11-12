@@ -120,11 +120,23 @@
         android:id="@+id/btn_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/colorDark"
+        android:layout_below="@id/txt_providerId"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorBlue"
+        android:textColor="@color/colorWhite"
         android:textSize="18sp"
         android:onClick="cerrarSesion"
         android:text="Cerrar Sesion" />
+
+    <Button
+        android:id="@+id/btn_verRegistros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_logout"
+        android:background="@color/colorBlue"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="10dp"
+        android:onClick="irRegistros"
+        android:text="Ver Registro" />
 
 </RelativeLayout>

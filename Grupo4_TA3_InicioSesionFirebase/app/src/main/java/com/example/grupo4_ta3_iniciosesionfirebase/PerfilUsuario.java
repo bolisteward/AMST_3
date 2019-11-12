@@ -105,4 +105,10 @@ public class PerfilUsuario extends AppCompatActivity {
         tweets.child(tweet).child("Telefono").setValue(phone);
         tweets.child(tweet).child("Provider Id").setValue(providerId);
     }
+    public void irRegistros(View view){
+        Intent intent = new Intent(this, Registro.class);
+        startActivity(intent);
+    }
+
 }
+
