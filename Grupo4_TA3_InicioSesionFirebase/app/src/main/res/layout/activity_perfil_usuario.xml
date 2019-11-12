@@ -136,6 +136,7 @@
         android:background="@color/colorBlue"
         android:textColor="@color/colorWhite"
         android:layout_marginTop="10dp"
+        android:textSize="18sp"
         android:onClick="irRegistros"
         android:text="Ver Registro" />
 

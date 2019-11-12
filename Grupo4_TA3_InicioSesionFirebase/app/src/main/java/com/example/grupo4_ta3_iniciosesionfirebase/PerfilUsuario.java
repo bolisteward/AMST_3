@@ -111,33 +111,7 @@ public class PerfilUsuario extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void leerRegistros(){
-        db_reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    mostrarRegistrosPorPantalla(snapshot);
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-                System.out.println(error.toException());
-            }
-        });
-    }
 
-    public void mostrarRegistrosPorPantalla(DataSnapshot snapshot){
-        LinearLayout contTemp = (LinearLayout) findViewById(R.id.ContenedorTemp);
-        LinearLayout contAxis = (LinearLayout) findViewById(R.id.ContenedorAxis);
-        String tempVal = String.valueOf(snapshot.child("temp").getValue());
-        String axisVal = String.valueOf(snapshot.child("axis").getValue());
-        TextView temp = new TextView(getApplicationContext());
-        temp.setText(tempVal+" C");
-        contTemp.addView(temp);
-        TextView axis = new TextView(getApplicationContext());
-        axis.setText(axisVal);
-        contAxis.addView(axis);
-    }
 
 }
 
