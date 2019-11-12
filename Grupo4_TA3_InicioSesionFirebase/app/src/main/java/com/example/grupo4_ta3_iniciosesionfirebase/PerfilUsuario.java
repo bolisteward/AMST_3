@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -108,6 +109,34 @@ public class PerfilUsuario extends AppCompatActivity {
     public void irRegistros(View view){
         Intent intent = new Intent(this, Registro.class);
         startActivity(intent);
+    }
+
+    public void leerRegistros(){
+        db_reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    mostrarRegistrosPorPantalla(snapshot);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                System.out.println(error.toException());
+            }
+        });
+    }
+
+    public void mostrarRegistrosPorPantalla(DataSnapshot snapshot){
+        LinearLayout contTemp = (LinearLayout) findViewById(R.id.ContenedorTemp);
+        LinearLayout contAxis = (LinearLayout) findViewById(R.id.ContenedorAxis);
+        String tempVal = String.valueOf(snapshot.child("temp").getValue());
+        String axisVal = String.valueOf(snapshot.child("axis").getValue());
+        TextView temp = new TextView(getApplicationContext());
+        temp.setText(tempVal+" C");
+        contTemp.addView(temp);
+        TextView axis = new TextView(getApplicationContext());
+        axis.setText(axisVal);
+        contAxis.addView(axis);
     }
 
 }
